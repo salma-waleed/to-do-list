@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to-do-list</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="header"><h2>To Do List</h2></div>
+        <div class="top">
+            <input type="text" id="input" placeholder="Enter the task">
+            <button id="add" onclick="addFunction()">ADD</button>
+            <button id="clear" onclick="clearData()">
+                <i class="fa-solid fa-trash"></i>
+            </button>
+        </div>
+
+        <div class="box" id="box">
+            <!-- <div class="cell" id="cell">
+                <p id="taskText"></p>
+
+                <div class="icons" id="icons">
+                    <span><i class="fa-solid fa-pencil"></i></span>
+                    <span><i class="fa-solid fa-check"></i></span>
+                    <span><i class="fa-solid fa-trash-can"></i></span>
+                </div>
+            </div> -->
+        </div>
+
+        <div class="completed">
+            <div class="header" id="completed-header"><h2>Completed Tasks</h2></div>
+            <button id="clearCompleted" onclick="clearCompletedTasks()">
+                <i class="fa-solid fa-trash"></i>
+            </button>
+        </div>
+        <div id="completed-tasks">
+            <!-- <div class="done-cell">
+                <span><i class="fa-solid fa-x  removeCompletedTask"></i></span>
+                <p>done</p>
+            </div> -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
