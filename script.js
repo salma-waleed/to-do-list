@@ -56,8 +56,8 @@ function displayData(){
     }else{
         for(let i = 0 ; i<tasks.length ; i++){
         box.innerHTML += `
-        <div class="cell" id="cell">
-            <p id="taskText">${tasks[i]}</p>
+        <div class="cell" id="cell-${i}" draggable = 'true'   ondragstart = "dragStart(event,${i})"  ondragover = "dragOver(event)" ondrop = "drop(event , ${i})"  ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+            <p id="taskText"> <span class="number">${i+1}</span> ${tasks[i]}</p>
             <div class="icons" id="icons">
                 <span onclick="editTask(${i})"><i class="fa-solid fa-pencil"></i></span>
                 <span onclick="completeTask(${i})"><i class="fa-solid fa-check"></i></span>
@@ -67,10 +67,44 @@ function displayData(){
     }
     }
 };
-
-
 displayData();
 
+
+
+
+// drag & drop
+
+function dragEnter(event) {
+    event.currentTarget.classList.add('drag-over');
+}
+
+function dragLeave(event) {
+    event.currentTarget.classList.remove('drag-over');
+}
+
+
+let dragIndex = null;
+
+function dragStart(event , index){
+    dragIndex = index;
+    event.dataTransfer.setData("text/plain" , index);
+}
+
+function dragOver(event) {
+    event.preventDefault();
+}
+
+function drop(event , dropIndex){
+    event.preventDefault();
+    if (dropIndex === null || dragIndex === dropIndex) return;
+
+    const [ draggedTask ] = tasks.splice( dragIndex , 1)
+    tasks.splice(dropIndex , 0 , draggedTask);
+
+    localStorage.setItem("task" , JSON.stringify(tasks));
+
+    displayData();
+};
 
 
 // clear function
