@@ -83,6 +83,7 @@ function dragLeave(event) {
 }
 
 
+
 let dragIndex = null;
 
 function dragStart(event , index){
